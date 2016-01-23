@@ -47,6 +47,9 @@ Handle<Value> Monitor(const Arguments& args) {
     // attatch channel to uv data
     channel->request.data = channel;
 
+    // default is to watch all cards
+    channel->card_name = NULL;
+
     // enqueue some work
     uv_queue_work(uv_default_loop(), &channel->request, monitor_async, monitor_async_after);
 

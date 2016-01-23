@@ -1,0 +1,6 @@
+#ifndef ALSA_CONSTANTS_NODE_HPP
+#define ALSA_CONSTANTS_NODE_HPP
+
+#define MAX_CARDS    256
+
+#endif

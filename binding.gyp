@@ -5,11 +5,17 @@
             "sources": [
                 "bindings.cpp",
                 "alsa/monitor-bindings.cpp",
-                "alsa/monitor.cpp"
+                "alsa/monitor.cpp",
+                "alsa/utils.cpp"
             ],
             "include_dirs": [
                 "<!(node -e \"require('nan')\")"
-            ]
+            ],
+            "libraries": [
+                "-lasound"
+            ],
+            "cflags": ["-Wall", "-Wextra", "-pedantic", "-Werror", "-O3"],
+            "cflags_cc": ["-std=c++11"]
         }
     ]
 }
