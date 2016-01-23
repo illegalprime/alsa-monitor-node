@@ -1,0 +1,20 @@
+{
+  "name": "alsa-monitor",
+  "version": "1.0.0",
+  "description": "Monitor ALSA things with node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node-gyp rebuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/illegalprime/alsa-monitor-node.git"
+  },
+  "author": "Michael Eden",
+  "license": "GPL-3.0",
+  "gypfile": true,
+  "dependencies": {
+    "nan": "^2.2.0"
+  }
+}
