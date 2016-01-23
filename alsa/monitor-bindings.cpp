@@ -3,11 +3,9 @@
 #include <string.h>
 #include <v8.h>
 
-using namespace v8;
+#include "monitor.hpp"
 
-void monitor_native(char*) {
-    usleep(1000000);
-}
+using namespace v8;
 
 // Carry data between threads
 struct MonitorChannel {
