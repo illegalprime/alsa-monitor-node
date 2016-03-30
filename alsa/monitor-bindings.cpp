@@ -12,7 +12,7 @@ struct MonitorChannel {
     // libuv control
     uv_work_t request;
     // javascript callback
-    Nan::Persistent<Function,CopyablePersistentTraits<v8::Function>> callback;
+    Nan::Callback* callback;
 
     // Configuration data for monitoring alsa cards
     char* card_name;
@@ -27,11 +27,10 @@ static void monitor_async(uv_work_t* request) {
 static void monitor_async_after(uv_work_t* request, int status) {
     MonitorChannel* channel = static_cast<MonitorChannel*>(request->data);
 
-
-
     // Execute callback notifying that something has changed
     //channel->callback->Call(Context::GetCurrent()->Global(), 0, NULL);
-    Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(channel->callback), 0, NULL);
+    //Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(channel->callback), 0, NULL);
+    channel->callback->Call(0, NULL);
 
     // This monitor loops forever, so send it back to poll some more
     uv_queue_work(uv_default_loop(), &channel->request, monitor_async, monitor_async_after);
@@ -39,13 +38,12 @@ static void monitor_async_after(uv_work_t* request, int status) {
     // TODO: How to cleanup stuff?
 }
 
-void Monitor(const Nan::FunctionCallbackInfo<v8::Value>& args) {
+void Monitor(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     // create communication channel
     MonitorChannel* channel = new MonitorChannel;
 
     // get callback from function and assign it
-    Local<Function> callback = Local<Function>::Cast(args[0]);
-    channel->callback = Nan::Persistent<Function,CopyablePersistentTraits<v8::Function>>(callback);
+    channel->callback = new Nan::Callback(info[0].As<Function>());
 
     // attatch channel to uv data
     channel->request.data = channel;
