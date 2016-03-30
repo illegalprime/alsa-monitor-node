@@ -2,7 +2,6 @@
 #include <string.h>
 #include <nan.h>
 
-
 #include "monitor.hpp"
 
 using namespace v8;
@@ -30,8 +29,6 @@ static void monitor_async_after(uv_work_t* request, int status) {
     MonitorChannel* channel = static_cast<MonitorChannel*>(request->data);
 
     // Execute callback notifying that something has changed
-    //channel->callback->Call(Context::GetCurrent()->Global(), 0, NULL);
-    //Nan::MakeCallback(Nan::GetCurrentContext()->Global(), Nan::New(channel->callback), 0, NULL);
     channel->callback->Call(0, NULL);
 
     // This monitor loops forever, so send it back to poll some more
