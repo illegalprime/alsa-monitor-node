@@ -11,10 +11,14 @@
     "type": "git",
     "url": "https://github.com/illegalprime/alsa-monitor-node.git"
   },
-  "author": "Michael Eden",
+  "contributors": [
+    "Michael Eden",
+    "Marcel Laurijsse"
+  ],
   "license": "GPL-3.0",
   "gypfile": true,
   "dependencies": {
-    "nan": "^2.2.0"
+    "bindings": "^1.2.1",
+    "nan": "^2.2.1"
   }
 }

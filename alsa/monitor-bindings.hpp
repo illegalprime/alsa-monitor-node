@@ -3,6 +3,6 @@
 
 #include <v8.h>
 
-void monitor_init(v8::Handle<v8::Object> exports);
+void monitor_init(v8::Local<v8::Object> exports);
 
 #endif
