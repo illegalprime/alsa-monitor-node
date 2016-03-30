@@ -25,7 +25,7 @@ static void monitor_async(uv_work_t* request) {
 }
 
 static void monitor_async_after(uv_work_t* request, int status) {
-    HandleScope scope;
+    Nan::HandleScope scope;
 
     MonitorChannel* channel = static_cast<MonitorChannel*>(request->data);
 
