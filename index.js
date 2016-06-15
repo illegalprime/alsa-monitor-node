@@ -1,1 +1,1 @@
-module.exports = require("./build/Release/alsa.node");
+module.exports = require('bindings')('alsa.node');

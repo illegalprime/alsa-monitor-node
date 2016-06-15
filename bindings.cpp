@@ -1,10 +1,9 @@
 #include "alsa/monitor-bindings.hpp"
-#include <node.h>
-#include <v8.h>
+#include <nan.h>
 
 using namespace v8;
 
-static void init(Handle<Object> exports) {
+static void init(v8::Local<v8::Object> exports) {
     monitor_init(exports);
 }
 
