@@ -18,11 +18,10 @@
                 "-Wall",
                 "-Wextra",
                 "-pedantic",
-                "-Werror",
                 "-O3",
             ],
             "cflags_cc": [
-                "-std=c++11",
+                "-std=c++0x",
             ],
         }
     ]
