@@ -32,7 +32,12 @@ static void monitor_async_after(uv_work_t* request, int status) {
     channel->callback->Call(0, NULL);
 
     // This monitor loops forever, so send it back to poll some more
-    uv_queue_work(uv_default_loop(), &channel->request, monitor_async, monitor_async_after);
+    uv_queue_work(
+        uv_default_loop(),
+        &channel->request,
+        monitor_async,
+        monitor_async_after
+    );
 
     // TODO: How to cleanup stuff?
 }
@@ -51,11 +56,18 @@ void Monitor(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     channel->card_name = NULL;
 
     // enqueue some work
-    uv_queue_work(uv_default_loop(), &channel->request, monitor_async, monitor_async_after);
+    uv_queue_work(
+        uv_default_loop(),
+        &channel->request,
+        monitor_async,
+        monitor_async_after
+    );
 
 }
 
 void monitor_init(v8::Local<v8::Object> exports) {
-    exports->Set(Nan::New("monitor").ToLocalChecked(),
-     Nan::New<v8::FunctionTemplate>(Monitor)->GetFunction());
+    exports->Set(
+        Nan::New("monitor").ToLocalChecked(),
+        Nan::New<v8::FunctionTemplate>(Monitor)->GetFunction()
+    );
 }

@@ -14,8 +14,16 @@
             "libraries": [
                 "-lasound"
             ],
-            "cflags": ["-Wall", "-Wextra", "-pedantic", "-Werror", "-O3"],
-            "cflags_cc": ["-std=c++11"]
+            "cflags": [
+                "-Wall",
+                "-Wextra",
+                "-pedantic",
+                "-Werror",
+                "-O3",
+            ],
+            "cflags_cc": [
+                "-std=c++11",
+            ],
         }
     ]
 }
