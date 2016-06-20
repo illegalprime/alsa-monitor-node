@@ -1,4 +1,4 @@
-# ALSA Monitoring
+# ALSA Monitoring ![build status](https://api.travis-ci.org/illegalprime/alsa-monitor-node.svg)
 
 A simple library to notify users when ALSA properties change.
 
